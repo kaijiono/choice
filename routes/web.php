@@ -11,6 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'MessagesController@index');
+
+Route::resource('messages', 'MessagesController');
+// 複写機能（ボタン）
+Route::get('messages/{id}/copy', 'MessagesController@copy');
