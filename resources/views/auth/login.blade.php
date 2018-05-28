@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1>Log in</h1>
+        <h1>ログイン</h1>
     </div>
 
     <div class="row">
@@ -19,10 +19,10 @@
                     {!! Form::password('password', ['class' => 'form-control']) !!}
                 </div>
 
-                {!! Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) !!}
+                {!! Form::submit('ログイン', ['class' => 'btn btn-primary btn-block']) !!}
             {!! Form::close() !!}
 
-            <p>New user? {!! link_to_route('signup.get', 'Sign up now!') !!}</p>
+            <p>完全無料♪新規登録はこちら！ {!! link_to_route('signup.get', '新規登録') !!}</p>
         </div>
     </div>
 @endsection
