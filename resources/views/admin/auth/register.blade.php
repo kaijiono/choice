@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app_admin')
 
 @section('content')
 <div class="container">
@@ -8,8 +8,8 @@
                 <div class="panel-heading">Register</div>
 
                 <div class="panel-body">
-               
-                    <form class="form-horizontal" method="POST" action="{{ route('register') }}">
+                {{-- 最低限actionのurlは変更必要 --}}
+                    <form class="form-horizontal" method="POST" action="{{ url('/admin/register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
