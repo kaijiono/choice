@@ -18,7 +18,7 @@ class WelcomeController extends Controller
                 'microposts' => $microposts,
             ];
             $data += $this->counts($user);
-            return view('users.show', $data);
+            return view('users.index', $data);
         }else {
             return view('welcome');
         }

@@ -1,10 +1,13 @@
+<?php
+
 namespace App\Http\Controllers\Admin\Auth; // \Adminを追記
  
 use App\Admin; // App\Adminに変更
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
- 
+
+
 class RegisterController extends Controller
 {
     /*
@@ -32,10 +35,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth:admin'); // 'auth:admin'に変更
-    }
+
  
  
     public function showRegisterForm()

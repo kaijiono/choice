@@ -7,7 +7,7 @@
         {{ $user->name }}
     @else
        
-       <img src="./images_choice/choice_top.png" alt="トップ画像" class="main_visual">
+       <img src="./images_choice/choice_top.jpg" alt="トップ画像" class="main_visual">
        
         
             <div class="text-center">
@@ -33,15 +33,16 @@
                 <p>だからこそ、本当に信頼できるビジネスパーソンを見つける事が大切なのです。</p>
                 </br>
                 <p>さあ、一生涯お付き合いの出来る不動産ビジネスパーソンを見つけましょう。</p>
+                <a href="*"><img src="images_choice/choice_buy.jpg" alt="買う相談"><br></a>
+                <a href="*"><img src="images_choice/choice_sell.jpg" alt="売る相談"><br></a>
+                <a href="*"><img src="images_choice/choice_rent.jpg" alt="賃貸相談"><br></a>
                 
-                {!! link_to_route('signup.get', '  新規登録  ', null, ['class' => 'btn btn-lg btn-success']) !!}</br>
-                {!! link_to_route('login', '  ログイン  ', null, ['class' => 'btn btn-lg btn-success']) !!}</br>
-                {!! link_to_route('signup.get', '  購入相談  ', null, ['class' => 'btn btn-lg btn-primary']) !!}
-                {!! link_to_route('signup.get', '  売却相談  ', null, ['class' => 'btn btn-lg btn-primary']) !!}
-                {!! link_to_route('signup.get', '  賃貸相談  ', null, ['class' => 'btn btn-lg btn-primary']) !!}</br>
+                {!! link_to_route('signup.get', '  新規登録  ', null, ['class' => 'btn btn-lg btn-success']) !!}
+                {!! link_to_route('login', '  ログイン  ', null, ['class' => 'btn btn-lg btn-success']) !!}
+            
                 
-                {!! link_to_route('admin::login', '  ビジネスパーソンログイン  ', null, ['class' => 'btn btn-lg btn-primary']) !!}</br>
-                {!! link_to_route('admin::register', '  ビジネスパーソン新規登録  ', null, ['class' => 'btn btn-lg btn-primary']) !!}
+                {!! link_to_route('admin::welcome', '  ビジネスパーソンはこちら！ ', null, ['class' => 'btn btn-lg btn-primary']) !!}</br>
+                
                 
             </div>
         </div>
