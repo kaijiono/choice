@@ -1,6 +1,6 @@
 <?php
  
-namespace App\Http\Controllers\Bp;  // \Bpを追加
+namespace App\Http\Controllers\admin;  // \Bpを追加
  
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:bp');
+        $this->middleware('auth:admin');
     }
  
     /**
@@ -24,6 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('bp.home');
+        return view('admin.home');
     }
 }

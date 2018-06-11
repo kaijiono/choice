@@ -34,9 +34,9 @@
                         
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('users.show', ['id' => $user->id]) }}">TimeLine <span class="badge">{{ $count_microposts }}</span></a></li>
-                <li><a href="#">Followings</a></li>
-                <li><a href="#">Followers</a></li>
+                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('buys.index', ['id' => $user->id]) }}">買うプロフ </a></li>
+                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('sells.index', ['id' => $user->id]) }}">売るプロフ </a></li>
+                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('rents.index', ['id' => $user->id]) }}">賃貸プロフ </a></li>
                         <h1>基本プロフィール</h1>
                     @if (count($user) > 0)
                        <ul>

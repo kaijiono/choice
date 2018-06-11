@@ -7,7 +7,9 @@
         {{ $user->name }}
     @else
        
-       <img src="./images_choice/choice_admin.jpg" alt="adminトップ画像" class="main_visual">
+       <div id="admin_main_visual">
+           <img src="./images_choice/choice_admin.jpg" alt="adminトップ画像">
+       </div>
        
         
             <div class="text-center">

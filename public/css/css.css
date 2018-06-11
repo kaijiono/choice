@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+
+/*welcome.blade.php内main_visual*/
+#main_visual img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*welcome.blade.php内buy_visial*/
+#buy_visual img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*welcome.blade.php内sell_visial*/
+#sell_visual img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/*welcome.blade.php内rent_visial*/
+#rent_visual img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+
+
+
+/*adminwelcome.blade.php内 admin_main_visual*/
+#admin_main_visual img {
+  max-width: 100%;
+  max-height: 100%;
+}

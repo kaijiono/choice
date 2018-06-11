@@ -13,7 +13,7 @@ class AdminsController extends Controller
         
         $Admin = Admin::paginate(10);
 
-        return view('Admins.index', [
+        return view('admins.index', [
             'admins' => $admins,
         ]);
     }

@@ -13,7 +13,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
         <!-- Top image-->
-        <link href="css.css" rel="stylesheet" type="text/css">
+        <link href="/css/css.css" rel="stylesheet" type="text/css">
     </head>
     
     <body>

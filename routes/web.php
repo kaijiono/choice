@@ -46,7 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-//bpログイン関係
+//adminログイン関係(ビジネスパーソン）
 
 Auth::routes();
 
@@ -62,7 +62,8 @@ Route::prefix('admin')->name('admin::')->group(function() {
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('logout');
 
     // // Registration Routes...
-    Route::get('register', 'Admin\Auth\RegisterController@showRegistrationForm')->name('register');
+    
+    Route::get('register', 'Admin\Auth\RegisterController@showRegisterForm')->name('register')->middleware('guest');
     Route::post('register', 'Admin\Auth\RegisterController@register');
 
     // // Password Reset Routes...

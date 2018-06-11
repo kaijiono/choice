@@ -25,7 +25,7 @@ class LoginController extends Controller
     |
     */
  
-    use Authenticatesusers;
+    use AuthenticatesUsers;
  
     /**
      * Where to redirect users after login.
