@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home'; // '/admin/home'に変更
+    protected $redirectTo = '/admin/show/'; // '/admin/show/'に変更
  
     /**
      * Create a new controller instance.
@@ -40,7 +40,7 @@ class RegisterController extends Controller
  
     public function showRegisterForm()
     {
-        return view('admin.auth.register');
+        return view('admins.auth.register');
     }
     /**
      * Get a validator for an incoming registration request.
@@ -52,7 +52,7 @@ class RegisterController extends Controller
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
+            'email' => 'required|string|email|max:255|unique:admins',
             'password' => 'required|string|min:6|confirmed',
         ]);
     }

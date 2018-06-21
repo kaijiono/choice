@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\User; // 追加
 
+use App\Talks; // 追加
+
 class UsersController extends Controller
 {
     
@@ -167,5 +169,19 @@ class UsersController extends Controller
         ]);
     }
     
-    
+    //フォロー
+    public function followings($id)
+    {
+        $user = User::find($id);
+        $followings = $user->followings()->paginate(10);
+
+        $data = [
+            'user' => $user,
+            'admin' => $admin,
+        ];
+
+        $data += $this->counts($admin);
+
+        return view('admins.followings', $data);
+    }
 }

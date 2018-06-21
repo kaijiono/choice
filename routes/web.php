@@ -72,6 +72,24 @@ Route::prefix('admin')->name('admin::')->group(function() {
     // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-    Route::get('/home', 'AdminsController@index');
+    Route::get('/show', 'AdminsController@show')->name('admins.show');
     
+    Route::get('/create', 'AdminsController@create')->name('admins.create');
+    
+    Route::post('/store', 'AdminsController@store')->name('admins.store');
+    
+});
+
+//talksのルーティング　usersとadmin
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
+    Route::group(['prefix' => 'users/{id}'], function () {
+        Route::post('follow', 'TalksController@store')->name('talks.follow');
+        Route::delete('unfollow', 'TalksController@destroy')->name('user.unfollow');
+        Route::get('followings', 'TalksController@followings')->name('talks.followings');
+        Route::get('followers', 'TalksController@followers')->name('talks.followers');
+    });
+    
+
+    Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);
 });

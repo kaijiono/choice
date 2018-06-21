@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/home'; //管理者ログイン成功後のジャンプ先
+    protected $redirectTo = '/admin/show/'; //管理者ログイン成功後のジャンプ先
  
     /**
      * Create a new controller instance.
@@ -48,7 +48,7 @@ class LoginController extends Controller
     
     public function showLoginForm()
     {
-        return view('admin.auth.login'); //管理者ログインページのテンプレート
+        return view('admins.auth.login'); //管理者ログインページのテンプレート
     }
  
     protected function guard()

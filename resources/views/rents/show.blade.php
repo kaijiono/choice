@@ -12,3 +12,4 @@
         {!! Form::submit('削除') !!}
 
 @endsection
+

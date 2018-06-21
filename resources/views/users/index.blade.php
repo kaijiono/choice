@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="row">
+        
         <aside class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -12,6 +13,7 @@
                 </div>
             </div>
         </aside>
+        
         <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
                 <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('users.show', ['id' => $user->id]) }}">TimeLine <span class="badge">{{ $count_microposts }}</span></a></li>
@@ -103,6 +105,9 @@
             @if (count($microposts) > 0)
                 @include('microposts', ['microposts' => $microposts])
             @endif
+            
+            @include('talks.follow_button', ['user' => $user])
         </div>
+        
     </div>
 @endsection

@@ -26,6 +26,8 @@
                     @else
                         <li>{!! link_to_route('signup.get', '新規登録') !!}</li>
                         <li>{!! link_to_route('login', 'ログイン') !!}</li>
+                        <li>{!! link_to_route('admin::welcome', '営業パーソンはこちら') !!}</li>
+                        
                     @endif
                 </ul>
             </div>

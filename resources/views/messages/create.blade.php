@@ -15,7 +15,7 @@
         </div>
        
        <div class="form-group">
-        {!! Form::label('content', 'メッセージ:') !!}
+        {!! Form::label('content', '相談内容:') !!}
         {!! Form::text('content', null, ['class' => 'form-control']) !!}
 
         {!! Form::submit('投稿') !!}
