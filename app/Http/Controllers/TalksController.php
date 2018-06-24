@@ -17,4 +17,6 @@ class TalksController extends Controller
         \Auth::user()->unfollow($id);
         return redirect()->back();
     }
+    
+ 
 }

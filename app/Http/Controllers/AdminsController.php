@@ -91,7 +91,7 @@ class AdminsController extends Controller
         $admin->save();
 
         return view('admins.show', [
-            'admins' => $admin,
+            'admin' => $admin,
         ]);
     
     }
@@ -105,10 +105,11 @@ class AdminsController extends Controller
      // getでadmins/idにアクセスされた場合の「取得表示処理」
     public function show()
     {
-       $admins = Auth::guard('admin')->user();
+    
+       $admin = Auth::guard('admin')->user();
 
         return view('admins.show', [
-            'admins' => $admins,
+            'admin' => $admin,
         ]);
     }
     
@@ -124,7 +125,7 @@ class AdminsController extends Controller
         $admins = Admin::find($id);
 
         return view('Admins.edit', [
-            'admins' => $admins,
+            'admin' => $admin,
         ]);
     }
     
@@ -179,8 +180,8 @@ class AdminsController extends Controller
         
         $admin->save();
 
-        return view('users.index', [
-            'users' => $users,
+        return view('admins.index', [
+            'admins' => $admins,
         ]);
     }
     
@@ -197,8 +198,38 @@ class AdminsController extends Controller
         $admin->delete();
 
         return view('admins.index', [
-            'admins' => $admins,
+            'admin' => $admin,
         ]);
+    }
+    
+    public function followings($id)
+    {
+        $admin = Admin::find($id)->paginate(10);
+       
+
+        $data = [
+            'admin' => $admin,
+            
+        ];
+
+        $data += $this->counts($admin);
+
+        return view('talks.followings', $data);
+    }
+
+    public function followers($id)
+    {
+        $admin = Admin::find($id)->paginate(10);
+        
+
+        $data = [
+            'admin' => $admin,
+            
+        ];
+
+        $data += $this->counts($admin);
+
+        return view('talks.followers', $data);
     }
     
     

@@ -80,12 +80,12 @@ Route::prefix('admin')->name('admin::')->group(function() {
     
 });
 
-//talksのルーティング　usersとadmin
+//talksのルーティング　admin
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', 'UsersController', ['only' => ['index', 'show']]);
     Route::group(['prefix' => 'users/{id}'], function () {
         Route::post('follow', 'TalksController@store')->name('talks.follow');
-        Route::delete('unfollow', 'TalksController@destroy')->name('user.unfollow');
+        Route::delete('unfollow', 'TalksController@destroy')->name('talks.unfollow');
         Route::get('followings', 'TalksController@followings')->name('talks.followings');
         Route::get('followers', 'TalksController@followers')->name('talks.followers');
     });

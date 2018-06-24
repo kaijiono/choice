@@ -106,7 +106,7 @@
                 @include('microposts', ['microposts' => $microposts])
             @endif
             
-            @include('talks.follow_button', ['user' => $user])
+            
         </div>
         
     </div>

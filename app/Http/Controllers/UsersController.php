@@ -169,19 +169,6 @@ class UsersController extends Controller
         ]);
     }
     
-    //フォロー
-    public function followings($id)
-    {
-        $user = User::find($id);
-        $followings = $user->followings()->paginate(10);
-
-        $data = [
-            'user' => $user,
-            'admin' => $admin,
-        ];
-
-        $data += $this->counts($admin);
-
-        return view('admins.followings', $data);
-    }
+    
+    
 }
