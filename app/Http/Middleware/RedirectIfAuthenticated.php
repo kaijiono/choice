@@ -17,13 +17,15 @@ class RedirectIfAuthenticated
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $redir = '/home';
+
+        $redir = '/';
+
         switch ($guard) {
         case "admin":
-            $redir = '/admin/home';
+            $redir = '/admin/';
             break;
         default:
-            $redir = '/home';
+            $redir = '/';
             break;
         }
 

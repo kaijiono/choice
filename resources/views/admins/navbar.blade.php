@@ -12,10 +12,9 @@
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @if (Auth::check())
-                        
+                    @if (Auth::guard('admin')->check())
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::guard('admin')->user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="/">マイプロフィール</a></li>
                                 <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
@@ -24,10 +23,9 @@
                             </ul>
                         </li>
                     @else
-                        <li>{!! link_to_route('signup.get', '新規登録') !!}</li>
-                        <li>{!! link_to_route('login', 'ログイン') !!}</li>
-                        <li>{!! link_to_route('admin::welcome', '営業パーソンはこちら') !!}</li>
-                        
+                        <li>{!! link_to_route('admin::register', '新規登録') !!}</li>
+                        <li>{!! link_to_route('admin::login', 'ログイン') !!}</li>
+                        <li>{!! link_to_route('welcome', '相談したい方はこちら') !!}</li>
                     @endif
                 </ul>
             </div>

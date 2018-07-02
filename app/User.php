@@ -50,13 +50,13 @@ class User extends Authenticatable
     }
 }
 
-    public function unfollow($adminId){
+    public function unfollow($userId){
     // 既にフォローしているかの確認
-    $exist = $this->is_following($adminId);
+    $exist = $this->is_following($userId);
     
     if ($exist) {
         // 既にフォローしていればフォローを外す
-        $this->followings()->detach($adminId);
+        $this->followings()->detach($userId);
         return true;
     } else {
         // 未フォローであれば何もしない
@@ -64,8 +64,8 @@ class User extends Authenticatable
     }
 }
 
-    public function is_following($adminId) {
-        return $this->followings()->where('admin_id', $adminId)->exists();
+    public function is_following($userId) {
+        return $this->followings()->where('user_id', $userId)->exists();
 }
     
     

@@ -1,32 +1,20 @@
-{{-- 自分自身のshow(詳細ページ) --}}  
-
-@extends('layouts.app_admin')
+{{-- userが閲覧する為のshow(詳細ページ) --}}  
+@extends('layouts.app')
 
 @section('content')
+    
         <div class="row">
         
         <aside class="col-xs-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h3 class="panel-title">{{ $admin->name }}</h3>
+                    <h3 class="panel-title">営業パーソン{{ $admin->name }}さんのプロフィール</h3>
                 </div>
                 <div class="panel-body">
                 <img class="media-object img-rounded img-responsive" src="{{ Gravatar::src($admin->email, 500) }}" alt="ビジネスパーソン写真">
                 </div>
             </div>
         </aside>
-        
-        <div class="col-xs-8">
-            <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" class="{{ Request::is('admins/' . $admin->id) ? 'active' : '' }}"><a href="#">TimeLine</a></li>
-                <li><a href="#">Followings</a></li>
-                <li><a href="#">Followers</a></li>
-            </ul>
-            <h1>マイページ</h1>
-            
-            {!! link_to_route('admin::admins.create', 'プロフィール作成') !!}
-         </div>
-         <h1>基本プロフィール</h1>
                        
                   
                 <table class="table table-striped table-bordered">
@@ -37,27 +25,27 @@
                         </tr>
             
                         <tr>
-                            <th class="text-center">会社名</th>
+                            <th class="text-center">会社名（チョイスするまで表示されない)</th>
                             <th class="text-center">{{ $admin->residential_district }}</th>
                         </tr>
             
                         <tr>
-                            <th class="text-center">会社住所</th>
+                            <th class="text-center">会社住所（チョイスするまで表示されない)</th>
                             <th class="text-center">{{ $admin->address }}</th>
                         </tr>
             
                         <tr>
-                             <th class="text-center">連絡先</th>
+                             <th class="text-center">連絡先（チョイスするまで表示されない)</th>
                              <th class="text-center">{{ $admin->phone }}</th>
                         </tr>
             
                         <tr>
-                            <th class="text-center">会社電話番号</th>
+                            <th class="text-center">会社電話番号（チョイスするまで表示されない</th>
                             <th class="text-center">{{ $admin->company_phone }}</th>
                         </tr>
             
                         <tr>
-                            <th class="text-center">LINE ID</th>
+                            <th class="text-center">LINE ID（チョイスするまで表示されない</th>
                             <th class="text-center">{{ $admin->line }}</th>
                         </tr>
             
@@ -108,7 +96,7 @@
             
                 </table>
                         
-                
+                @include('talks.follow_button', ['admin' => $admin])
          
     </div>
 @endsection

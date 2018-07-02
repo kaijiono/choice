@@ -10,27 +10,36 @@
                 </button>
                 <a class="navbar-brand" href="/">Choice</a>
             </div>
+            
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
+                
                     @if (Auth::check())
                         
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="/">マイプロフィール</a></li>
-                                <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
-                                <li role="separator" class="divider"></li>
-                                <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
-                            </ul>
-                        </li>
-                    @else
-                        <li>{!! link_to_route('signup.get', '新規登録') !!}</li>
-                        <li>{!! link_to_route('login', 'ログイン') !!}</li>
-                        <li>{!! link_to_route('admin::welcome', '営業パーソンはこちら') !!}</li>
+                                <ul class="dropdown-menu">
+                                    
+                                    <li><a href="/">マイプロフィール</a></li>
+                                
+                            
+                                    <li>{!! link_to_route('admin::admins.index', '営業パーソン一覧') !!}</li>
+                                         <li role="separator" class="divider"></li>
+                                    <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
+                            
+                           
                         
+                                @else
+                                    <li>{!! link_to_route('signup.get', '新規登録') !!}</li>
+                                    <li>{!! link_to_route('login', 'ログイン') !!}</li>
+                                    <li>{!! link_to_route('admin::welcome', '営業パーソンはこちら') !!}</li>
+                                </ul>
+                        </li>
                     @endif
                 </ul>
             </div>
+            
         </div>
+        
     </nav>
 </header>

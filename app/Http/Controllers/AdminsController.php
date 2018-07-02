@@ -10,6 +10,12 @@ use \Auth;
 
 class AdminsController extends Controller
 {
+    //コンストラクタ
+    public function __construct()
+   {
+    $this->middleware('auth:admin', ['except' => ['index', 'show', 'showuser']]);
+    }
+    
     
     /**
      * Display a listing of the resource.
@@ -20,7 +26,7 @@ class AdminsController extends Controller
      
     public function index()
     {
-        $admins = Admin::all();
+        $admins = Admin::paginate(10);
 
         return view('admins.index', [
             'admins' => $admins,
@@ -104,13 +110,13 @@ class AdminsController extends Controller
      */
      // getでadmins/idにアクセスされた場合の「取得表示処理」
     public function show()
-    {
-    
+    { 
        $admin = Auth::guard('admin')->user();
-
+       
         return view('admins.show', [
             'admin' => $admin,
         ]);
+        
     }
     
     /**
@@ -127,11 +133,6 @@ class AdminsController extends Controller
         return view('Admins.edit', [
             'admin' => $admin,
         ]);
-    }
-    
-    public function __construct()
-   {
-    $this->middleware('auth:admin');
     }
     
     /**
@@ -232,5 +233,13 @@ class AdminsController extends Controller
         return view('talks.followers', $data);
     }
     
+     public function showuser($id)
+    {
+        $admin = Admin::where('id', $id)->first();
+       
+        return view('admins.showuser', [
+            'admin' => $admin,
+        ]);
+    }
     
 }

@@ -17,7 +17,7 @@
     </head>
     
     <body>
-        @include('commons.navbar')
+        @include('users.navbar')
 
         <div class="container">
             @include('commons.error_messages')

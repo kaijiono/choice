@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
 
 // ユーザ登録
 Route::get('signup', 'Auth\RegisterController@showRegistrationForm')->name('signup.get');
@@ -72,11 +72,16 @@ Route::prefix('admin')->name('admin::')->group(function() {
     // Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('password.reset');
     // Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-    Route::get('/show', 'AdminsController@show')->name('admins.show');
+    Route::get('/show', 'AdminsController@show')->name('admin.show');
     
     Route::get('/create', 'AdminsController@create')->name('admins.create');
     
     Route::post('/store', 'AdminsController@store')->name('admins.store');
+    
+    Route::group(['middleware' => ['auth']], function () { 
+        Route::get('/index', 'AdminsController@index')->name('admins.index');
+        Route::get('/show/{id}', 'AdminsController@showuser')->name('admins.showuser');
+    });
     
 });
 
@@ -89,6 +94,8 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('followings', 'TalksController@followings')->name('talks.followings');
         Route::get('followers', 'TalksController@followers')->name('talks.followers');
     });
+    
+    
     
 
     Route::resource('microposts', 'MicropostsController', ['only' => ['store', 'destroy']]);

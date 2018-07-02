@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html>
-
-
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,11 +13,11 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         
         <!-- Top image-->
-        <link href="css.css" rel="stylesheet" type="text/css">
+        <link href="/css/css.css" rel="stylesheet" type="text/css">
     </head>
     
     <body>
-        @include('commons.navbar')
+        @include('admins.navbar')
 
         <div class="container">
             @include('commons.error_messages')

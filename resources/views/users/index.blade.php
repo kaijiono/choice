@@ -41,63 +41,63 @@
                 <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('rents.index', ['id' => $user->id]) }}">賃貸プロフ </a></li>
                         <h1>基本プロフィール</h1>
                     @if (count($user) > 0)
-                       <ul>
+                       
                        
             
-                           <table class="table table-striped table-bordered">
-                           <tr>
-                               <th class="text-center">ニックネーム</th>
-                               <th class="text-center">{{ $user->alias }}</th>
-                           </tr>
+                        <table class="table table-striped table-bordered">
+                            <tr>
+                                <th class="text-center">ニックネーム</th>
+                                <th class="text-center">{{ $user->alias }}</th>
+                            </tr>
             
-                           <tr>
-                               <th class="text-center">住所１</th>
-                               <th class="text-center">{{ $user->residential_district }}</th>
-                           </tr>
+                            <tr>
+                                <th class="text-center">住所１</th>
+                                <th class="text-center">{{ $user->residential_district }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">住所２</th>
-                            <th class="text-center">{{ $user->address }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">住所２</th>
+                                <th class="text-center">{{ $user->address }}</th>
+                            </tr>
             
-                        <tr>
-                             <th class="text-center">電話番号</th>
-                             <th class="text-center">{{ $user->phone }}</th>
-                        </tr>
+                            <tr>
+                                 <th class="text-center">電話番号</th>
+                                 <th class="text-center">{{ $user->phone }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">LINE</th>
-                            <th class="text-center">{{ $user->line }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">LINE</th>
+                                <th class="text-center">{{ $user->line }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">家族構成</th>
-                            <th class="text-center">{{ $user->family_structure }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">家族構成</th>
+                                <th class="text-center">{{ $user->family_structure }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">使用言語</th>
-                            <th class="text-center">{{ $user->language }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">使用言語</th>
+                                <th class="text-center">{{ $user->language }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">居住地区</th>
-                            <th class="text-center">{{ $user->residential_district }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">居住地区</th>
+                                <th class="text-center">{{ $user->residential_district }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">出身地</th>
-                            <th class="text-center">{{ $user->birthplace }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">出身地</th>
+                                <th class="text-center">{{ $user->birthplace }}</th>
+                            </tr>
             
-                        <tr>
-                            <th class="text-center">趣味</th>
-                            <th class="text-center">{{ $user->hobby }}</th>
-                        </tr>
+                            <tr>
+                                <th class="text-center">趣味</th>
+                                <th class="text-center">{{ $user->hobby }}</th>
+                            </tr>
                         
-            
-                        
-                        {!! Form::close() !!}
+                            {!! Form::close() !!}
+                        </table>
+                   
                     @endif
             
             @endif
