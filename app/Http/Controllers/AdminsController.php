@@ -8,12 +8,14 @@ use App\Admin; // 追加
 
 use \Auth;
 
+use App\Talk;
+
 class AdminsController extends Controller
 {
     //コンストラクタ
     public function __construct()
-   {
-    $this->middleware('auth:admin', ['except' => ['index', 'show', 'showuser']]);
+    {
+        $this->middleware('auth:admin', ['except' => ['index', 'show', 'showuser', 'admins']]);
     }
     
     
@@ -109,9 +111,9 @@ class AdminsController extends Controller
      * @return \Illuminate\Http\Response
      */
      // getでadmins/idにアクセスされた場合の「取得表示処理」
-    public function show()
+    public function show($id)
     { 
-       $admin = Auth::guard('admin')->user();
+       $admin = Admin::find($id);
        
         return view('admins.show', [
             'admin' => $admin,
@@ -181,8 +183,8 @@ class AdminsController extends Controller
         
         $admin->save();
 
-        return view('admins.index', [
-            'admins' => $admins,
+        return view('admins.show', [
+            'admin' => $admin,
         ]);
     }
     
@@ -242,4 +244,61 @@ class AdminsController extends Controller
         ]);
     }
     
+    // ログイン後のページは admin用のTOPページ
+    public function admin()
+    { 
+      
+       $admin = Auth::guard('admin')->user();
+       
+        return view('admins.admin', [
+            'admin' => $admin,
+        ]);
+    }
+     
+     // ログイン後のページは admin用のTOPページ
+    public function admins()
+    { 
+      $admins = Admin::paginate(10);
+
+        return view('admins.admins', [
+            'admins' => $admins,
+        ]);
+    }
+    
+    
+    public function talks($id)
+    { 
+      
+      $talks = Talk::all();
+      
+      
+            
+        return view('admins.talks', [
+            'talks' => $talks,
+        ]);
+    }
+    
+     public function talksstore(Request $request)
+    {
+        
+        $this->validate($request, [
+            'is_user' => 'required',   
+            'comment' => 'required',
+        ]);
+        
+        $talk = new Talk;
+        $talk->is_user = $request->is_user;
+        $talk->comment = $request->comment;
+       
+        $talk->user_id = \Auth::user()->id;
+        $talk->admin_id = \Auth::guard('admin')->user()->id;
+        
+        $talk->is_user = false;
+        
+        $talk->save();
+        
+        
+
+        return redirect()->route('talks', [$talk]);
+    }
 }

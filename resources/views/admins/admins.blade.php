@@ -1,20 +1,19 @@
-@if (count($admins) > 0)
-<ul class="media-list">
-@foreach ($admins as $admin)
-    <li class="media">
-        <div class="media-left">
-            <img class="media-object img-rounded" src="{{ Gravatar::src($admin->email, 50) }}" alt="">
-        </div>
-        <div class="media-body">
-            <div>
-                {{ $admin->name }}
-            </div>
-            <div>
-                <p>{!! link_to_route('admins.show', 'View profile', ['id' => $admin->id]) !!}</p>
-            </div>
-        </div>
-    </li>
-@endforeach
-</ul>
-{!! $admins->render() !!}
-@endif
+{{-- userに表示される一覧 --}}
+@extends('layouts.app')
+
+@section('content')
+
+    <h1>営業パーソン一覧</h1>
+    
+    @if (count($admins) > 0)
+        <ul>
+            @foreach ($admins as $admin)
+                
+                <li>{!! link_to_route('admin::admins.showuser', $admin->id, ['id' => $admin->id]) !!} : {{ $admin->name }}</li>
+            @endforeach
+            
+           
+        </ul>
+    @endif
+   
+@endsection

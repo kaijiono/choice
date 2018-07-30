@@ -4,21 +4,32 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User; //追加
+
+use App\Message; //追加
+
+use App\Admin; //追加
+
 class WelcomeController extends Controller
 {
+    //message一覧の取得
     public function index()
     {
         $data = [];
-        if (\Auth::check()) {
+        if (\Auth::check()) 
+        {
+            
             $user = \Auth::user();
-            $microposts = $user->microposts()->orderBy('created_at', 'desc')->paginate(10);
+            $messages = $user->messages()->orderBy('created_at', 'desc')->paginate(10);
 
             $data = [
                 'user' => $user,
-                'microposts' => $microposts,
+                'messages' => $messages,
+                
             ];
             $data += $this->counts($user);
-            return view('users.index', $data);
+            return view('users.show', $data);
+        
         }else {
             return view('welcome');
         }

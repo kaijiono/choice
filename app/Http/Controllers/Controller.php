@@ -7,15 +7,20 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
+
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     
     public function counts($user) {
-        $count_microposts = $user->microposts()->count();
+        
+        $count_messages = $user->messages()->count();
+        $count_followings = $user->followings()->count();
+        
 
         return [
-            'count_microposts' => $count_microposts,
+            'count_messages' => $count_messages,
+            'count_follwings' => $count_followings,
         ];
     }
 }

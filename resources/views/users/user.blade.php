@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{-- admin用showサブビュー --}}
+@extends('layouts.app_admin')
 
 @section('content')
     <div class="row">
@@ -13,33 +14,11 @@
                 </div>
             </div>
         </aside>
-        
-        <div class="col-xs-8">
-            <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('users.show', ['id' => $user->id]) }}">相談している内容 <span class="badge">{{ $count_messages }}</span></a></li>
-                <li><a href="#">Followings</a></li>
-                <li><a href="#">Followers</a></li>
-            </ul>
-            <h1>マイページ</h1>
-        @if (Auth::user()->id == $user->id)
-                    {!! Form::open(['route' => 'messages.store']) !!}
-                        <div class="form-group">
-                          {!! Form::textarea('title', old('title'), ['class' => 'form-control', 'rows' => '2']) !!}
-                          {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'rows' => '2']) !!}
-                          {!! Form::submit('相談する', ['class' => 'btn btn-primary btn-block']) !!}
-                        </div>
-                        
-                        {!! link_to_route('users.index', '  仮）基本プロフィール  ', null, ['class' => 'btn btn-lg btn-primary']) !!}
-                        {!! link_to_route('buys.index', '  仮）かうプロフィール  ', null, ['class' => 'btn btn-lg btn-primary']) !!}
-                        {!! link_to_route('sells.index', '  仮）うるプロフィール  ', null, ['class' => 'btn btn-lg btn-primary']) !!}
-                        {!! link_to_route('rents.index', '  仮）賃貸プロフィール  ', null, ['class' => 'btn btn-lg btn-primary']) !!}</br>
-                        </br>
+         
                         
             <div class="col-xs-8">
             <ul class="nav nav-tabs nav-justified">
-                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('buys.index', ['id' => $user->id]) }}">買うプロフ </a></li>
-                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('sells.index', ['id' => $user->id]) }}">売るプロフ </a></li>
-                <li role="presentation" class="{{ Request::is('users/' . $user->id) ? 'active' : '' }}"><a href="{{ route('rents.index', ['id' => $user->id]) }}">賃貸プロフ </a></li>
+               
                         <h1>基本プロフィール</h1>
                     @if (count($user) > 0)
                        
@@ -101,7 +80,7 @@
                    
                         @endif
             
-            @endif
+           
             
             @if (count($messages) > 0)
                 @include('messages.messages', ['messages' => $messages])

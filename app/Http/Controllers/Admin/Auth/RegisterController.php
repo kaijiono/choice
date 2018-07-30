@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/show/'; // '/admin/show/'に変更
+    protected $redirectTo = '/admin/admin/'; // '/admin/admin/'に変更（sは不要）
  
     /**
      * Create a new controller instance.

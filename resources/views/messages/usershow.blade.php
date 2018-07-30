@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{{-- admin用showサブビュー --}}
+@extends('layouts.app_admin')
 
 @section('content')
 
@@ -22,9 +23,9 @@
         
     </table>
     
-    {!! link_to_route('messages.edit', 'このメッセージを編集', ['id' => $message->id], ['class' => 'btn btn-default']) !!}
-    {!! Form::model($message, ['route' => ['messages.destroy', $message->id], 'method' => 'delete']) !!}
-    　　　{!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
+    
     {!! Form::close() !!}
 @endforeach
+<li>{!! link_to_route('admin::users.user', '相談者のプロフィールを見る', ['id' =>Auth::id()]) !!}</li>
+<li>{!! link_to_route('talks', 'トークルームを作成する', ['id' =>Auth::id()]) !!}</li>
 @endsection

@@ -27,10 +27,15 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function microposts()
+    
+    public function followers()
     {
-        return $this->hasMany(Micropost::class);
+        return $this->belongsToMany(User::class, 'followings', 'user_id', 'admin_id')->withTimestamps();
     }
     
-    
+    public function talks()
+    {
+        return $this->hasMany(Talk::class);
+    }
+  
 }

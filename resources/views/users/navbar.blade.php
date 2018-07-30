@@ -20,10 +20,11 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     
-                                    <li><a href="/">マイプロフィール</a></li>
+                                    
+                                    <li>{!! link_to_route('users.show', 'マイプロフィール', ['id' => Auth::id()]) !!}</li>
                                 
                             
-                                    <li>{!! link_to_route('admin::admins.index', '営業パーソン一覧') !!}</li>
+                                    <li>{!! link_to_route('admin::admins.admins', '営業パーソン一覧') !!}</li>
                                          <li role="separator" class="divider"></li>
                                     <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                             

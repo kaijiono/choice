@@ -37,8 +37,12 @@
                 <p>だからこそ、本当に信頼できるビジネスパーソンを見つける事が大切なのです。</p>
                 </br>
                 <p>さあ、一生涯お付き合いの出来る不動産ビジネスパーソンを見つけましょう。</p>
+            
             <div id="buy_visual">
-                <a href="*"><img src="images_choice/choice_buy.jpg" alt="買う相談"></a>
+        
+                    <a href="{{ route('message.create')}}">
+                        <img src="images_choice/choice_buy.jpg" alt="買う相談">
+                    </a>
             </div>
             
             <div id="sell_visual">

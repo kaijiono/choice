@@ -15,14 +15,15 @@ class CreateTalksTable extends Migration
     {
         Schema::create('talks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('admin_id')->unsigned()->index();
+            $table->integer('user_id')->nullable()->default(null)->unsigned()->index();
+            $table->integer('admin_id')->nullable()->default(null)->unsigned()->index();
+            $table->text('comment')->nullable()->default(null);
+            $table->boolean('is_user')->default(false);
             $table->timestamps();
             // 外部キー設定
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('admin_id')->references('id')->on('admins')->onDelete('cascade');
-            // user_idとadmin_idの組み合わせの重複を許さない
-            $table->unique(['user_id', 'admin_id']);
+            $table->foreign('user_id')->references('id')->on('users')->increments();
+            $table->foreign('admin_id')->references('id')->on('admins');
+           
         });
     }
 

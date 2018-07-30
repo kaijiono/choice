@@ -1,4 +1,4 @@
-<header>
+<footer>
     <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
@@ -33,4 +33,4 @@
             </div>
         </div>
     </nav>
-</header>
+</footer>

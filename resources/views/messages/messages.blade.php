@@ -1,7 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
-
+{{-- showサブビュー --}}
  <h1>相談した内容一覧</h1>
 
 @foreach ($messages as $message)
@@ -22,9 +19,6 @@
         
     </table>
     
-    {!! link_to_route('messages.edit', 'このメッセージを編集', ['id' => $message->id], ['class' => 'btn btn-default']) !!}
-    {!! Form::model($message, ['route' => ['messages.destroy', $message->id], 'method' => 'delete']) !!}
-    　　　{!! Form::submit('削除', ['class' => 'btn btn-danger']) !!}
+    
     {!! Form::close() !!}
 @endforeach
-@endsection

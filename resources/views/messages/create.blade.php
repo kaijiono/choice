@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>メッセージ新規作成ページ</h1>
+<h1>相談フォーム</h1>
 
 
 <div class="row">
@@ -10,7 +10,7 @@
         {!! Form::model($message, ['route' => 'messages.store']) !!}
         
         <div class="form-group">
-            {!! Form::label('title', 'タイトル:') !!}
+            {!! Form::label('title', '題名:') !!}
             {!! Form::text('title', null, ['class' => 'form-control']) !!}
         </div>
        
@@ -18,7 +18,7 @@
         {!! Form::label('content', '相談内容:') !!}
         {!! Form::text('content', null, ['class' => 'form-control']) !!}
 
-        {!! Form::submit('投稿') !!}
+        {!! Form::submit('相談する') !!}
 
         {!! Form::close('投稿', ['class' => 'btn btn-primary']) !!}
     

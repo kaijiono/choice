@@ -32,7 +32,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/show/'; //管理者ログイン成功後のジャンプ先
+    protected $redirectTo = '/admin/admin/'; //管理者ログイン成功後のジャンプ先（sは不要）
  
     /**
      * Create a new controller instance.

@@ -8,6 +8,8 @@ use App\User; // 追加
 
 use App\Talks; // 追加
 
+use App\Message; //追加
+
 class UsersController extends Controller
 {
     
@@ -20,11 +22,7 @@ class UsersController extends Controller
     
     public function index()
     {
-         $users = User::all();
-        
-        return view('users.index', [
-            'users' => $users,
-        ]);
+        //
     }
     
     /**
@@ -72,12 +70,9 @@ class UsersController extends Controller
         $user->residential_district = $request->residential_district;
         $user->birthplace = $request->birthplace;
         $user->hobby = $request->hobby;
-        
         $user->save();
 
-        return view('users.index', [
-            'users' => $users,
-        ]);
+        return redirect()->route('users.show');
     
     }
     
@@ -91,10 +86,25 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-
-        return view('users.show', [
+        $messages = $user->messages()->orderBy('created_at', 'desc')->paginate(10);
+        
+        
+        $data = [
             'user' => $user,
-        ]);
+            'messages' => $messages,
+        ];
+        
+        $data += $this->counts($user);
+        
+        return view('users.show', $data);
+        
+        
+        /**$user = User::find($id);
+         * 
+         * return view('users.show', [
+         * 'user' => $user,
+         * ]);
+         */
     }
     
     /**
@@ -147,9 +157,7 @@ class UsersController extends Controller
         
         $user->save();
 
-        return view('users.index', [
-            'users' => $users,
-        ]);
+        return redirect()->route('users.show');
     }
     
     /**
@@ -164,11 +172,25 @@ class UsersController extends Controller
         $user = User::find($id);
         $user->delete();
 
-        return view('users.index', [
-            'users' => $users,
-        ]);
+        return redirect()->route('users.show');
     }
     
+    //admin用showサブビュー
+    public function user($id)
+    {
+        $user = User::find($id);
+        $messages = $user->messages()->orderBy('created_at', 'desc')->paginate(10);
+        
+        
+        $data = [
+            'user' => $user,
+            'messages' => $messages,
+        ];
+        
+        $data += $this->counts($user);
+        
+        return view('users.show', $data);
+    }
 
     
 }

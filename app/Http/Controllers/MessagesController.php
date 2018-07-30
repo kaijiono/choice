@@ -8,6 +8,8 @@ use App\Http\Requests;
 
 use App\Message;    // 追加
 
+use App\User;    // 追加
+
 class MessagesController extends Controller
 {
     /**
@@ -16,6 +18,7 @@ class MessagesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    
     {
         $messages = Message::all();
 
@@ -55,6 +58,7 @@ class MessagesController extends Controller
         $message = new Message;
         $message->title = $request->title;    // 追加
         $message->content = $request->content;
+        $message->user_id = \Auth::user()->id;//追加
         $message->save();
 
         return redirect('/');
@@ -68,8 +72,9 @@ class MessagesController extends Controller
      */
     public function show($id)
     {
+        
         $message = Message::find($id);
-
+        
         return view('messages.show', [
             'message' => $message,
         ]);
@@ -126,4 +131,26 @@ class MessagesController extends Controller
 
         return redirect('/');
     }
+    
+    public function userindex()
+    {
+       
+        $messages = Message::orderBy('created_at', 'desc')->paginate(10);
+
+        return view('messages.userindex', [
+            'messages' => $messages,
+        ]);
+    }
+    
+    public function usershow($id)
+    {
+        $user = User::find($id);
+        $messages = $user->messages()->orderBy('created_at', 'desc')->paginate(10);
+        
+        return view('messages.usershow', [
+            'messages' => $messages,
+        ]);
+    }
+    
+    
 }

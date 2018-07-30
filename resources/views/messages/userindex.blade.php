@@ -1,4 +1,5 @@
-@extends('layouts.app')
+{-- adminが表示するためのindex --}
+@extends('layouts.app_admin')
 
 @section('content')
 
@@ -16,7 +17,7 @@
             <tbody>
                 @foreach ($messages as $message)
                     <tr>
-                        <td>{!! link_to_route('messages.show', $message->id, ['id' => $message->id]) !!}</td>
+                        <td>{!! link_to_route('message.usershow', $message->user_id,  $message->id) !!}</td>
                         <td>{{ $message->title }}</td>
                         <td>{{ $message->content }}</td>
                     </tr>

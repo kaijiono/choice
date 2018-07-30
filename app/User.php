@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use App\Admin;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -29,13 +31,10 @@ class User extends Authenticatable
     
     public function followings()
     {
-        return $this->belongsToMany(User::class, 'talks', 'user_id', 'admin_id')->withTimestamps();
+        return $this->belongsToMany(Admin::class, 'followings', 'user_id', 'admin_id')->withTimestamps();
     }
 
-    public function followers()
-    {
-        return $this->belongsToMany(User::class, 'talks', 'user_id', 'admin_id')->withTimestamps();
-    }
+    
     public function follow($adminId){
         // 既にフォローしているかの確認
         $exist = $this->is_following($adminId); 
@@ -68,11 +67,14 @@ class User extends Authenticatable
         return $this->followings()->where('user_id', $userId)->exists();
 }
     
-    
-    public function microposts()
+     public function talks()
     {
-        return $this->hasMany(Micropost::class);
+        return $this->hasMany(Talk::class);
     }
     
+     public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
     
 }

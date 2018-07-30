@@ -14,7 +14,11 @@ class AddTitleToMessagesTable extends Migration
     public function up()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->string('title');
+            $table->string('title')->nullable();
+            $table->integer('user_id')->unsigned()->index();
+            // 外部キー制約
+            $table->foreign('user_id')->references('id')->on('users');
+           
         });
     }
 
@@ -26,7 +30,7 @@ class AddTitleToMessagesTable extends Migration
     public function down()
     {
         Schema::table('messages', function (Blueprint $table) {
-            $table->dropColumn('title');
+          
         });
     }
 }

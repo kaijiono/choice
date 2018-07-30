@@ -16,8 +16,8 @@
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Auth::guard('admin')->user()->name }} <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="/">マイプロフィール</a></li>
-                                <li>{!! link_to_route('users.index', 'ユーザー一覧') !!}</li>
+                                <li>{!! link_to_route('admin::admins.admin', 'マイプロフィール') !!}</li>
+                                <li>{!! link_to_route('message.userindex', 'お客様の相談を見る', ['id' =>auth::id()]) !!}</li>
                                 <li role="separator" class="divider"></li>
                                 <li>{!! link_to_route('logout.get', 'ログアウト') !!}</li>
                             </ul>
@@ -25,7 +25,7 @@
                     @else
                         <li>{!! link_to_route('admin::register', '新規登録') !!}</li>
                         <li>{!! link_to_route('admin::login', 'ログイン') !!}</li>
-                        <li>{!! link_to_route('welcome', '相談したい方はこちら') !!}</li>
+                        <li>{!! link_to_route('welcome', 'プロに相談したい方はこちら') !!}</li>
                     @endif
                 </ul>
             </div>
